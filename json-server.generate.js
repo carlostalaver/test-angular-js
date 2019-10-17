@@ -93,7 +93,7 @@ for (var i=1; i<=10; i++) {
   });
 }
 
-var i=1;
+/* var i=1;
 database.compras.push({
   id: i++,
   fecha: "10/10/2019",
@@ -107,7 +107,7 @@ database.compras.push({
   cantidad: "2",
   total : "10000",
   estado : "Enviada"
-});
+}); */
 
 
 database.dashboards.push({

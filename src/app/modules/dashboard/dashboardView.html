@@ -14,15 +14,12 @@
 		<section class="col-xs-12 col-lg-7">
 			<article>
 			<header>
-					<h3>Bienvenido a la Intranet! Estás en el dashboard privado.</h3>
+				<h3>Bienvenido a la Intranet! Estás en el dashboard privado.</h3>
 			</header>
-			<p>
-					En esta sección solo se admiten miembros registrados.
-
-					<ol>
-							<li ng-repeat="song in dashboardCtrl.songs">"{{song.name}}" by <strong>{{song.credits}}</strong>. Número de reproducciones : {{song.reproductions | filter : number}}</li>
-					</ol>
-
+			<p>	En esta sección solo se admiten miembros registrados.
+				<ol>
+					<li ng-repeat="song in dashboardCtrl.songs">"{{song.name}}" by <strong>{{song.credits}}</strong>. Número de reproducciones : {{song.reproductions | filter : number}}</li>
+				</ol>
 			</p>
 			</article>
 		</section>
