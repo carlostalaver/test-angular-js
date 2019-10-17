@@ -68,8 +68,10 @@ app.controller("tiendaController", ["rutas", "Producto", "SessionStorage", "Auth
 
 
   ctrl.comprar = function () {
+    var fecha = new Date();
+    var fechaCompra = fecha.getDate() +'/'+ (fecha.getMonth() +1)+ '/' +fecha.getFullYear();
    var compras = {
-    "fecha": new Date(),
+    "fecha": fechaCompra,
     "items": [carritoCompra],
     "precioTotal": ctrl.tlt.total,
     "cantidadTotal": ctrl.tlt.cantidad,

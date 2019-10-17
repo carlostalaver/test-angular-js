@@ -56,7 +56,7 @@
       <div class="col-xs-12 col-lg-5" style="background-color:E3FFF5 !important;">
         <h2>Carrito</h2>
           <div ng-if="tiendaCtrl.tlt && tiendaCtrl.tlt.total > 0">
-          <table class="table">
+          <table class="table table-striped">
             <thead>
               <tr>
                 <th>Producto</th>
@@ -66,9 +66,6 @@
               </tr>
             </thead>
             <tbody>
-              <pre>
-                {{tiendaCtrl.shoppingCar}}
-              </pre>
               <tr ng-repeat="(key, value) in tiendaCtrl.shoppingCar">
                 <td>{{value.nombre}}</td>
                 <td>{{value.precio}}</td>
