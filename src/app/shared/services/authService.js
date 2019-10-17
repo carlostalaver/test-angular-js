@@ -1,4 +1,4 @@
-app.factory('Auth', ["api", "LocalStorage", "$window", function(api, LocalStorage, $window) {
+app.factory('Auth', ["api", "LocalStorage", "$window", "SessionStorage",  function(api, LocalStorage, $window, SessionStorage) {
 
     var service = {};
     
@@ -42,6 +42,7 @@ app.factory('Auth', ["api", "LocalStorage", "$window", function(api, LocalStorag
 
     service.logout = function(){
         LocalStorage.remove("jwtToken");
+        SessionStorage.clear();
     }
 
     return service;

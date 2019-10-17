@@ -14,6 +14,9 @@ app.factory('SessionStorage', [function () {
         },
         getObject: function (key) {
             return JSON.parse(sessionStorage.getItem(key));
+        },
+        clear: function (key) {
+            sessionStorage.clear();
         }
     }
 }]);
