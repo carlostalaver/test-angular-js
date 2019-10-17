@@ -53,36 +53,38 @@
           </article>
         </form>
       </div>
-      <div class="col-xs-12 col-lg-5" style="background-color:#F0F7F4;">
-        <h2>Carrito</h2>
+      <div class="col-xs-12 col-lg-5" style="background-color:#F0F7F4; font-size:0.8em;">
+        <h3>Carrito</h3>
           <div ng-if="tiendaCtrl.tlt && tiendaCtrl.tlt.total > 0">
           <table class="table table-striped">
             <thead>
               <tr>
                 <th>Producto</th>
                 <th>Precio</th>
-                <th>Cantidad</th>
+                <th style="text-align:center;" >Cantidad</th>
                 <th></th>
+                
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="(key, value) in tiendaCtrl.shoppingCar">
                 <td>{{value.nombre}}</td>
-                <td>{{value.precio}}</td>
-                <td>{{value.cantidad}}</td>
+                <td>{{value.precio | currency}}</td>
+                <td style="text-align:center;">{{value.cantidad}}</td>
                 <td><button type="button" class="btn btn-danger btn-sm" ng-click="tiendaCtrl.eliminar(value.id)">Eliminar</button></td>
               </tr>
               <tr>
-                <td><p>Total</p></td>
-                <td><p>CLP $ {{tiendaCtrl.tlt.total}}</p></td>
-                <td><p>{{tiendaCtrl.tlt.cantidad}}</p></td>
+                <td><p><strong>Total</strong></p></td>
+                <td><p><strong> CLP {{tiendaCtrl.tlt.total | currency }}</strong></p></td>
+                <td style="text-align:center;"><p><strong>{{tiendaCtrl.tlt.cantidad}}</strong></p></td>
                 <td><button type="button" class="btn btn-success btn-sm" ng-click="tiendaCtrl.comprar()">Comprar</button></td>
               </tr>
             </tbody>
           </table>
           </div>
           <div ng-if="(tiendaCtrl.tlt && tiendaCtrl.tlt.total > 0)? false : true">
-            <p>{{tiendaCtrl.msj}} <a href="{{tiendaCtrl.rutas.appBaseUrl+tiendaCtrl.rutas.compra}}" ng-if="tiendaCtrl.irCompras" >Ir a Mis Compras</a></p>
+            <em ng-if="!tiendaCtrl.irCompras">{{tiendaCtrl.msj}}</em>
+            <p ng-if="tiendaCtrl.irCompras">{{tiendaCtrl.msj}} <a href="{{tiendaCtrl.rutas.appBaseUrl+tiendaCtrl.rutas.compra}}"><strong>Ir a Mis Compras</strong></a></p>
           </div>
       </div>
     </article> 

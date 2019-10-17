@@ -14,11 +14,9 @@ app.controller("tiendaController", ["rutas", "Producto", "SessionStorage", "Auth
   ctrl.tlt = SessionStorage.getObject('total');
 
   ctrl.addProducto = function (producto, cantidad) {
-
     var encontrado = carritoCompra.findIndex(function (produc) {
       return produc.id == producto.id;
     })
-
 
     if (encontrado == -1) {
       var objProducto = {
@@ -40,7 +38,6 @@ app.controller("tiendaController", ["rutas", "Producto", "SessionStorage", "Auth
     ctrl.shoppingCar = carritoCompra;
     ctrl.tlt = ctrl.total();
     actualizaSessionStorage()
-
   }
 
 
@@ -54,7 +51,6 @@ app.controller("tiendaController", ["rutas", "Producto", "SessionStorage", "Auth
 
 
   ctrl.eliminar = function (id) {
-
     var temp = ctrl.shoppingCar.filter(function (a) {
       var result = (a.id != id);
       return result;
@@ -66,30 +62,27 @@ app.controller("tiendaController", ["rutas", "Producto", "SessionStorage", "Auth
     actualizaSessionStorage();
   }
 
-
   ctrl.comprar = function () {
     var fecha = new Date();
-    var fechaCompra = fecha.getDate() +'/'+ (fecha.getMonth() +1)+ '/' +fecha.getFullYear();
-   var compras = {
-    "fecha": fechaCompra,
-    "items": [carritoCompra],
-    "precioTotal": ctrl.tlt.total,
-    "cantidadTotal": ctrl.tlt.cantidad,
-    "moneda": "CLP",
-    "usuario": ctrl.usuario,
-    "estado": "enviada",
-  
-   }
-    Compra.save(compras,function(){
-        console.log('Compra procesada');
-        
+    var fechaCompra = fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear();
+    var compras = {
+      "fecha": fechaCompra,
+      "items": [carritoCompra],
+      "precioTotal": ctrl.tlt.total,
+      "cantidadTotal": ctrl.tlt.cantidad,
+      "moneda": "CLP",
+      "usuario": ctrl.usuario,
+      "estado": "enviada"
+    }
+
+    Compra.save(compras, function (res) {
+      console.log('Compra procesada ...', res);
+       ctrl.msj = "La compra ha sido exitosa."
     })//endCompra
-    
-    ctrl.msj = "La compra ha sido exitosa"
+
     clearSession();
 
   }
-
 
   function actualizaSessionStorage() {
     SessionStorage.setObject('carrito', ctrl.shoppingCar);
