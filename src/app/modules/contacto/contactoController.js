@@ -27,5 +27,14 @@ app.controller("contactoController", ["$location", function($location){
 
     ctrl.enviar = function(){
         console.log("ctrl.form : ", ctrl.form);
+        console.log("ctrl.form : ", ctrl);
     };
+
+
+    ctrl.validarEntrada = function(event) {
+        //const limpio = frase.toLowerCase().replace(/[\*\<>^\'\!]/g, ' ')
+      console.log('el value ', event.target.value);
+
+
+    }   
 }])

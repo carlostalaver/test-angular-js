@@ -1,4 +1,5 @@
-app.controller("loginController", ["Auth", "rutas", "$location", "$scope", function(Auth, rutas, $location, $scope){
+app.controller("loginController", ["Auth", "rutas", "$location", "$scope",
+ function(Auth, rutas, $location, $scope){
     var ctrl = this;
     ctrl.errorMessage;
 

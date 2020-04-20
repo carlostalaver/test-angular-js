@@ -83,13 +83,17 @@
                             <div class="col-xs-12 col-lg-8">
                                 <div class="form-group" ng-class="contactoCtrl.formulario.mensaje.$touched
                                 && contactoCtrl.formulario.mensaje.$invalid ? 'has-error' : ''">
-                                    <label for="mensaje">Mensaje:</label>
-                                    <textarea name="mensaje" class="form-control" ng-model="contactoCtrl.form.mensaje" required></textarea>
+                                    <label for="mensaje">Mensaje: {{contactoCtrl.formulario.mensaje.$invalid }}</label>
+                                    <textarea name="mensaje" class="form-control" ng-model="contactoCtrl.form.mensaje"   ng-keypress="contactoCtrl.validarEntrada($event)"
+                                    required pattern="^[a-zA-Z0-9.,/ $?@()]+$" ></textarea>
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-success" ng-click="contactoCtrl.enviar()" ng-disabled="!contactoCtrl.formulario.$valid">Enviar</button>
-                    </form>
+                        <!-- !contactoCtrl.formulario.$valid -->
+                        <button class="btn btn-success" ng-click="contactoCtrl.enviar()" ng-disabled="false">
+                            Enviar
+                        </button>
+                        </form>
             </article>
         </section>
     </div>

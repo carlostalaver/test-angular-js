@@ -51,6 +51,8 @@ gulp.task('js-app-dist', function(done) {
     .pipe(gulp.dest(distDir+'/scripts/'))
     .on('end', done)
 });
+
+/* 
 gulp.task('js-lib-dist', function(done) {
     var libFiles = [libDir + '/angular/angular.min.js',
         libDir + '/angular-route/angular-route.min.js',
@@ -62,7 +64,7 @@ gulp.task('js-lib-dist', function(done) {
         .pipe(uglify())
         .pipe(gulp.dest(distDir+'/scripts/'))
         .on('end', done)
-});
+}); */
 
 gulp.task('html-dist', function (done) {
     gulp.src([
@@ -120,4 +122,5 @@ gulp.task('fonts-dist', function() {
       .pipe(gulp.dest('./dist/fonts/'));
   });
 
-gulp.task('default', ['js-lib-dist', 'js-app-dist', 'html-dist', 'css-lib-dist', 'css-app-dist', 'img-dist', 'fonts-dist']);
+//gulp.task('default', ['js-lib-dist', 'js-app-dist', 'html-dist', 'css-lib-dist', 'css-app-dist', 'img-dist', 'fonts-dist']);
+gulp.task('default', ['js-app-dist', 'html-dist', 'css-lib-dist', 'css-app-dist', 'img-dist', 'fonts-dist']);
